@@ -1,4 +1,3 @@
-/*
 package hello.hellospring;
 
 import hello.hellospring.repository.MemberRepository;
@@ -20,4 +19,3 @@ public class SpringConfig {
         return new MemoryMemberRepository();
     }
 }
-*/
