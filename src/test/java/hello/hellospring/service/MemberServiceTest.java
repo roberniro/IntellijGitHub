@@ -1,9 +1,11 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
@@ -13,9 +15,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
     //MemoryMemberRepository memberRepository = new MemoryMemberRepository(); // 새 객체 생성 비효율적->멤버서비스에 생성자 추가
 
+    @BeforeEach
+    public void beforeEach() {
+        // DI(Dependency Injection): 의존성 주입
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
+    }
     @AfterEach
     void afterEach() {
         memberRepository.clearStore();
