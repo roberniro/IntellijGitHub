@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,7 +21,8 @@ class MemberServiceIntegrationTest {
     @Autowired MemberService memberService;
     @Autowired MemberRepository memberRepository;
 
-    @Test // test 는 한글로 적어도 된다!
+    @Test // test 는 한글로 적어도 된다
+//    @Commit // Commit 은 데이터베이스에 저장된다
     void 회원가입() {
         // given
         Member member = new Member();
@@ -46,11 +48,11 @@ class MemberServiceIntegrationTest {
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
     }
 
-    @Test
-    void findMembers() {
-    }
-
-    @Test
-    void findOne() {
-    }
+//    @Test
+//    void findMembers() {
+//    }
+//
+//    @Test
+//    void findOne() {
+//    }
 }
